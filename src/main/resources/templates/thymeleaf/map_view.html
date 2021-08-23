@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html layout:decorator="~{layouts/layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="container" layout:fragment="content">
+    <h1>Thymeleaf 예제</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="entry : ${mapList}">
+            <td th:text="${entry.key}"></td>
+            <td th:text="${entry.value}"></td>
+        </tr>
+
+    </table>
+</div>
+</html>
