@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
@@ -43,5 +45,18 @@ public class SampleController {
         model.addAttribute("productList", productList);
 
         return "thymeleaf/list_view";
+    }
+
+    @GetMapping("/ex03")
+    public String ex03(Model model) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("key1", 100);
+        map.put("key2", 200);
+        map.put("key3", 300);
+
+        model.addAttribute("mapList", map);
+
+        return "thymeleaf/map_view";
     }
 }
