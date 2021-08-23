@@ -1,4 +1,4 @@
-package com.hendisantika;
+package com.hendisantika.enums;
 
 /**
  * Created by IntelliJ IDEA.

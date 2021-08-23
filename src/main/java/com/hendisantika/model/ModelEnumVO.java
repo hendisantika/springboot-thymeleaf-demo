@@ -1,6 +1,6 @@
 package com.hendisantika.model;
 
-import com.hendisantika.Color;
+import com.hendisantika.enums.Color;
 import lombok.Data;
 
 /**
