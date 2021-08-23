@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -69,10 +70,10 @@ public class SampleController {
         List<ProductVO> productList2 = new ArrayList<>();
 
         IntStream.range(0, 10).forEach(i -> {
-            productList.add(new ProductVO("상품" + i, i * 1000, new Date()));
+            productList.add(new ProductVO("Goods" + i, i * 1000, new Date()));
         });
         IntStream.range(0, 10).forEach(i -> {
-            productList2.add(new ProductVO("상품2" + i, i * 100, new Date()));
+            productList2.add(new ProductVO("Product 2" + i, i * 100, new Date()));
         });
 
         map.put("key1", productList);
@@ -81,5 +82,27 @@ public class SampleController {
         model.addAttribute("mapList", map);
 
         return "thymeleaf/map_list_view";
+    }
+
+    @GetMapping("/ex05")
+    public String ex05(Model model) {
+
+        List<Map<String, ProductVO>> mapList = new ArrayList<>();
+
+        Map<String, ProductVO> fakeData = new LinkedHashMap<>();
+        fakeData.put("testA", new ProductVO("Product A", 10000, new Date()));
+        fakeData.put("testB", new ProductVO("Product B", 5000, new Date()));
+        fakeData.put("testC", new ProductVO("Product C", 1000, new Date()));
+        mapList.add(fakeData);
+        fakeData.clear();
+        fakeData.put("testA", new ProductVO("Product A", 10000, new Date()));
+        fakeData.put("testB", new ProductVO("Product B", 5000, new Date()));
+        fakeData.put("testC", new ProductVO("Product A", 1000, new Date()));
+
+        mapList.add(fakeData);
+
+        model.addAttribute("mapList", mapList);
+
+        return "thymeleaf/list_map_view";
     }
 }
