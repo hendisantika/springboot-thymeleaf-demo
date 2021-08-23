@@ -59,4 +59,27 @@ public class SampleController {
 
         return "thymeleaf/map_view";
     }
+
+    @GetMapping("/ex04")
+    public String ex04(Model model) {
+
+        Map<String, List<ProductVO>> map = new HashMap<>();
+
+        List<ProductVO> productList = new ArrayList<>();
+        List<ProductVO> productList2 = new ArrayList<>();
+
+        IntStream.range(0, 10).forEach(i -> {
+            productList.add(new ProductVO("상품" + i, i * 1000, new Date()));
+        });
+        IntStream.range(0, 10).forEach(i -> {
+            productList2.add(new ProductVO("상품2" + i, i * 100, new Date()));
+        });
+
+        map.put("key1", productList);
+        map.put("key2", productList2);
+
+        model.addAttribute("mapList", map);
+
+        return "thymeleaf/map_list_view";
+    }
 }
