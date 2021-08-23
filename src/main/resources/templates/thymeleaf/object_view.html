@@ -2,18 +2,21 @@
 <html layout:decorator="~{layouts/layout}"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
+
 <div class="container" layout:fragment="content">
     <h1>Thymeleaf example</h1>
     <table class="table table-striped">
         <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Registration Date</th>
         </tr>
-        <tr th:each="entry : ${mapList}">
-            <td th:text="${entry.key}"></td>
-            <td th:text="${entry.value}"></td>
+        <tr>
+            <td th:text="${productVO.name}"></td>
+            <td th:text="${productVO.price}"></td>
+            <td th:text="${productVO.regDate}"></td>
         </tr>
-
     </table>
+
 </div>
 </html>
