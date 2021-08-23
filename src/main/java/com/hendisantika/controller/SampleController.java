@@ -1,6 +1,11 @@
 package com.hendisantika.controller;
 
+import com.hendisantika.model.ProductVO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,5 +18,15 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class SampleController {
+    @GetMapping("/ex01")
+    public String ex01(Model model) {
+        ProductVO productVO = new ProductVO();
+        productVO.setName("상품A");
+        productVO.setPrice(10000);
+        productVO.setRegDate(new Date());
 
+        model.addAttribute("productVO", productVO);
+
+        return "thymeleaf/object_view";
+    }
 }
